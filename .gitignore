@@ -1,0 +1,9 @@
+# Not part of the website
+scroll-craft_*
+mobile-preview/
+*.zip
+
+# OS / editor clutter
+Thumbs.db
+desktop.ini
+.DS_Store
