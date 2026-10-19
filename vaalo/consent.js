@@ -16,6 +16,16 @@
 
   document.querySelectorAll('[data-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
 
+  // Vercel Web Analytics: cookieless page views, stores nothing on the device,
+  // so it runs without the consent banner. Served by Vercel only (skipped locally).
+  if (!LOCAL) {
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    const va = document.createElement('script');
+    va.defer = true;
+    va.src = '/_vercel/insights/script.js';
+    document.head.appendChild(va);
+  }
+
   const read = () => { try { return JSON.parse(localStorage.getItem(KEY)); } catch { return null; } };
   const save = analytics => { try { localStorage.setItem(KEY, JSON.stringify({ analytics, date: new Date().toISOString() })); } catch {} };
 
